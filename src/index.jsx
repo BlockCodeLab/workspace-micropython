@@ -2,6 +2,7 @@ import featureImage from './feature.png';
 
 export default {
   preview: true,
+  sortIndex: 1,
   image: featureImage,
   name: 'MicroPython',
   description: 'Write magical code that controls everything.',
