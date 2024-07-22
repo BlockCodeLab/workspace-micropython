@@ -39,7 +39,7 @@ const getFileType = (name) => {
 
 export default function FileSelector() {
   const { getText } = useLocale();
-  const { fileList, selectedIndex, addFile, openFile, deleteFile } = useEditor();
+  const { fileList, selectedFileId, addFile, openFile, deleteFile } = useEditor();
 
   const handleFileChange = async ({ target }) => {
     for (const file of target.files) {
@@ -86,14 +86,14 @@ ${getText('micropython.fileInfo.modified', 'Modified')}: ${new Date(file.lastMod
               {
                 label: getText('micropython.contextMenu.delete', 'delete'),
                 className: styles.deleteMenuItem,
-                onClick: () => deleteFile(index),
+                onClick: () => deleteFile(file.id),
               },
             ],
           ],
         }))}
-        selectedIndex={selectedIndex}
-        onSelect={openFile}
-        onDelete={deleteFile}
+        selectedIndex={fileList.findIndex((file) => file.id === selectedFileId)}
+        onSelect={(index) => openFile(fileList[index].id)}
+        onDelete={(index) => deleteFile(fileList[index].id)}
       />
 
       <ActionButton

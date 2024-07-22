@@ -24,12 +24,13 @@ export default function MicroPython({ addLocaleData, createLayout, openProject, 
   });
 
   const createDefaultProject = (project) => {
+    project = project ?? defaultProject;
     openProject(
       Object.assign(
         {
-          selectedIndex: 0,
+          selectedFileId: project.fileList(0).id,
         },
-        project || defaultProject,
+        project,
       ),
     );
   };

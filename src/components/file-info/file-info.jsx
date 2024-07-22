@@ -11,10 +11,10 @@ const getSizeText = (size) => {
 
 export default function FileInfo() {
   const { getText } = useLocale();
-  const { fileList, selectedIndex, renameFile } = useEditor();
+  const { fileList, selectedFileId, renameFile } = useEditor();
 
-  const file = selectedIndex >= 0 && fileList[selectedIndex];
-  const disabled = selectedIndex === -1;
+  const disabled = selectedFileId === null;
+  const file = fileList.find((file) => file.id === selectedFileId);
 
   const handleChangeName = (value) => renameFile(value);
 
