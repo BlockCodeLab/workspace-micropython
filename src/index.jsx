@@ -1,6 +1,7 @@
 import featureImage from './feature.png';
 
 export default {
+  hidden: true,
   preview: true,
   sortIndex: 1,
   image: featureImage,
